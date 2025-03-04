@@ -25,8 +25,8 @@ Este projeto é um sistema de gerenciamento de produtos com autenticação de us
 
 1. Clone o repositório:
    ```bash
-   git clone <seu-repositorio>
-   cd <seu-repositorio>
+   git clone https://github.com/rogerapdev/ProductManagement.git
+   cd ProductManagement
    ```
 
 2. String de conexão do banco de dados em `src/ProductManagement.API/appsettings.json`:
