@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset básico e configurações de fonte */
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 48%;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-family: var(--font-sans);
+}
+
+/* Melhorias para inputs e formulários */
+input, textarea, select {
+  @apply block w-full px-4 py-2.5 text-base;
+  @apply bg-white border border-gray-300 rounded-md;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  @apply dark:bg-gray-800 dark:border-gray-700 dark:text-white;
+  color: #333333 !important; /* Forçando cor escura para melhor visibilidade */
+  background-color: white !important; /* Garantindo fundo branco mesmo quando autopreenchido */
+  transition: all 0.2s ease-in-out;
+}
+
+.dark input, 
+.dark textarea, 
+.dark select {
+  color: #e5e7eb !important;
+  background-color: #1f2937 !important;
+}
+
+input::placeholder, textarea::placeholder {
+  @apply text-gray-500 dark:text-gray-400;
+  opacity: 0.7;
+}
+
+label {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left;
+  text-align: left !important; /* Forçando alinhamento à esquerda */
+}
+
+/* Para garantir que os labels dentro de qualquer contexto permaneçam à esquerda */
+.text-center label,
+.text-right label,
+div label,
+form label,
+fieldset label {
+  text-align: left !important;
+}
+
+/* Estilo para botões */
+.btn, button[type="submit"] {
+  @apply inline-flex items-center justify-center;
+  @apply rounded-md text-sm font-medium transition-colors;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  @apply disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  @apply focus-visible:ring-primary;
+}
+
+/* Cards e containers */
+.card {
+  @apply bg-card text-card-foreground rounded-lg border shadow-sm;
+}
+
+.container {
+  @apply p-4 md:p-6 mx-auto;
+}
+
+/* Melhorias para tabelas */
+table {
+  @apply w-full text-sm text-left;
+}
+
+thead {
+  @apply text-xs uppercase bg-gray-50 dark:bg-gray-700;
+}
+
+th, td {
+  @apply px-6 py-3;
+}
+
+tr {
+  @apply border-b dark:border-gray-700;
+}
+
+/* Melhorias para mensagens de alerta/erro */
+.alert {
+  @apply p-4 mb-4 rounded-lg;
+}
+
+.alert-success {
+  @apply bg-green-100 border border-green-400 text-green-700;
+}
+
+.alert-error {
+  @apply bg-red-100 border border-red-400 text-red-700;
+}
+
+.alert-warning {
+  @apply bg-yellow-100 border border-yellow-400 text-yellow-700;
+}
+
+/* Layout responsivo */
+.grid-layout {
+  @apply grid gap-4;
+  @apply md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+}
+
+/* Melhorias para modais */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4;
+}
+
+.modal-content {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-auto;
+}
+
+/* Melhorias para navegação */
+nav {
+  @apply flex items-center justify-between p-4 bg-white dark:bg-gray-800 shadow;
+}
+
+/* Animações úteis */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Melhorias para acessibilidade */
+:focus {
+  @apply outline-none ring-2 ring-offset-2 ring-blue-500;
+}
+
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Scrollbars personalizados para melhor UX */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-700;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-500 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-400;
+  }
+}
+
+/* Corrige o problema de estilo do Chrome para campos autocompletados */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #333333 !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Para tema escuro (se você estiver usando) */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover, 
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1f2937 inset !important;
+    -webkit-text-fill-color: #e5e7eb !important;
+}
